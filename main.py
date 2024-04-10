@@ -26,7 +26,7 @@ def save_spectrogram(audio_path):
     plt.close()
 
 # Path to the folder containing subfolders with audio files
-folder_path = r'Path/to/audio/folders'
+folder_path = r'path_to_folder'
 
 # Iterate over each subfolder
 for root, dirs, files in os.walk(folder_path):
@@ -34,4 +34,6 @@ for root, dirs, files in os.walk(folder_path):
         if file.endswith('.ogg'):  # Assuming audio files are in .ogg format
             audio_path = os.path.join(root, file)
             save_spectrogram(audio_path)
+            # Free up memory by closing the plots
+            plt.close('all')
     print(f"Spectrograms saved for {root}")
